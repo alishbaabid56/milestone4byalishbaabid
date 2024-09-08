@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Editable Dynamic Resume Created by Alishba Abid</h1>
+    
+    <div id="form-section">
+        <h2>Fill Your Resume</h2>
+        <form id="resume-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" />
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" />
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" />
+            </div>
+            <div>
+                <label for="education">Education:</label>
+                <input type="text" id="education" />
+            </div>
+            <div>
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" />
+            </div>
+            <div>
+                <label for="experience">Experience:</label>
+                <input type="text" id="experience" />
+            </div>
+            <button type="button" onclick="updateResume()">Update Resume</button>
+        </form>
+    </div>
+    
+    <div id="resume-output" class="hidden">
+        <h2>My Resume</h2>
+        <div class="resume-section">
+            <p id="output-name"></p>
+            <button onclick="editSection('name')">Edit</button>
+        </div>
+        <div class="resume-section">
+            <p id="output-education"></p>
+            <button onclick="editSection('education')">Edit</button>
+        </div>
+        <div class="resume-section">
+            <p id="output-skills"></p>
+            <button onclick="editSection('skills')">Edit</button>
+        </div>
+        <div class="resume-section">
+            <p id="output-experience"></p>
+            <button onclick="editSection('experience')">Edit</button>
+        </div>
+    </div>
+<script>
+          function updateResume() {
+            document.getElementById('resume-output').classList.remove('hidden');
+            document.getElementById('output-name').innerText = 'Name: ' + document.getElementById('name').value;
+            document.getElementById('output-education').innerText = 'Education: ' + document.getElementById('education').value;
+            document.getElementById('output-skills').innerText = 'Skills: ' + document.getElementById('skills').value;
+            document.getElementById('output-experience').innerText = 'Experience: ' + document.getElementById('experience').value;
+        }
+
+        function editSection(sectionId) {
+            document.getElementById('form-section').scrollIntoView();
+            document.getElementById(sectionId).value = document.getElementById('output-' + sectionId).innerText.replace(/.*: /, '');
+        }
+
+</script>
+</body>
+</html>
